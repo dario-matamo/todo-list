@@ -3,8 +3,14 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+app.set('view engine','ejs');
+
 app.get("/",function (req,res) {
-    res.send("Hello");
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let today = new Date();
+    let day = weekday[today.getDay()];
+    
+    res.render("list",{day: day});
 });
 
 app.listen(3000, function () {
