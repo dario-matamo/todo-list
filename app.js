@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(express.static("public"));
+
 app.get("/",function (req,res) {
     let today = new Date();
     let options = {
@@ -25,9 +27,6 @@ app.get("/",function (req,res) {
 app.post("/",function (req,res) {
     let item = req.body.newItem;
     items.push(item);
-    for(var i =0;i<items.length;i++){
-        console.log(items.at(i));
-    }
     res.redirect("/");
 });
 
